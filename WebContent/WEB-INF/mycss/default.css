@@ -1,0 +1,39 @@
+ body,h1,h2,h3,h4,h5,h6{
+
+  font-family:sans-serif,Georgia,Serif;
+}
+.carousel-caption h2{
+  margin-bottom: 50px;
+  margin-left: 0px;
+  padding-left: 0;
+}
+
+#myCarousel {
+  margin-left: 30%;
+  margin-top: 120px;
+  margin-bottom: 100px;
+  height: 380px;
+  width: 650px;
+  border-style: groove;
+}
+
+#copyright {
+  background: #eeeeee;
+  color: #999999;
+  padding: 20px 0;
+  font-size: 15px;
+  line-height: 28px;
+}
+#copyright p {
+  margin: 0;
+}
+@media (max-width: 991px) {
+  #copyright p {
+    float: none !important;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+}
+.thumbnail{
+  border-style: hidden;
+}

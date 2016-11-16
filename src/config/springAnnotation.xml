@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+      http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+      http://www.springframework.org/schema/context  
+      http://www.springframework.org/schema/context/spring-context.xsd  
+      http://www.springframework.org/schema/mvc 
+      http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd">
+      <!--处理对静态资源的请求  -->
+	 <mvc:resources location="/WEB-INF/css/" mapping="/css/**"/>
+	 <mvc:resources location="/WEB-INF/js/" mapping="/js/**"/>
+	 <mvc:resources location="/WEB-INF/articles/" mapping="/articles/**"/>
+	 <mvc:resources location="/WEB-INF/images/index/" mapping="/images/index/**"/>
+	 <mvc:resources location="/WEB-INF/images/tag/" mapping="/images/tag/**"/> 
+	 <mvc:resources location="/WEB-INF/images/artifact/" mapping="/images/artifact/**"/>  
+	 <mvc:resources location="/WEB-INF/images/craftsman/" mapping="/images/craftsman/**"/>
+	 <mvc:resources location="/WEB-INF/images/event/" mapping="/images/event/**"/>
+	 <mvc:resources location="/WEB-INF/images/fineart/" mapping="/images/fineart/**"/>
+	 <mvc:resources location="/WEB-INF/images/location/" mapping="/images/location/**"/>
+	 <mvc:resources location="/WEB-INF/images/profartist/" mapping="/images/profartist/**"/>
+	 <mvc:resources location="/WEB-INF/masonry/" mapping="/masonry/**"/>
+	 <mvc:resources location="/WEB-INF/mycss/" mapping="/mycss/**"/>
+	 <mvc:resources location="/WEB-INF/myjs/" mapping="/myjs/**"/>
+	 <mvc:resources location="/WEB-INF/res/" mapping="/res/**"/>
+	 <mvc:resources location="/WEB-INF/slick/" mapping="/slick/**"/>
+	 <mvc:resources location="/WEB-INF/fonts/" mapping="/fonts/**"/>
+	 <mvc:resources location="/WEB-INF/app/fonts/" mapping="/app/fonts/**"/>
+	 <mvc:resources location="/WEB-INF/bootstrap-select/" mapping="/bootstrap-select/**"/>
+	 <mvc:resources location="/WEB-INF/imagesLoaded/" mapping="/imagesloaded/**"/>
+	 <!--  提供注解驱动特性 --> 
+     <mvc:annotation-driven/>
+	 <context:component-scan base-package="controller" annotation-config="true"/> <!-- 定义需要使用注解方式的区域 -->
+	 <!--比较标准的spring使用方法-->
+	 <bean id="viewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="prefix" value="/WEB-INF/"></property>
+		<property name="suffix" value=".jsp"></property>
+	 </bean> 
+	 <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
+        <property name="defaultEncoding" value="utf-8"></property>   
+        <property name="maxUploadSize" value="10485760000"></property>  
+        <property name="maxInMemorySize" value="40960"></property>  
+   	</bean>  
+</beans>  
