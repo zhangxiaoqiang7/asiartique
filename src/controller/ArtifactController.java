@@ -60,10 +60,10 @@ public class ArtifactController {
 	public String getAllArtifact(HttpServletRequest req){
 		String page=req.getParameter("page");
 		Vector<Artifact> artifacts=getMutArtifacts(new Integer(page));
-		JSONObject jo=new JSONObject();
 		JSONArray ja=new JSONArray();
 		try {
 			for (Artifact artifact : artifacts) {
+				JSONObject jo=new JSONObject();
 				jo.put("id", artifact.getId());
 				jo.put("name", artifact.getName());
 				jo.put("location", artifact.getLocation());
@@ -102,13 +102,13 @@ public class ArtifactController {
 		}
 		artifact.setTags(tags);
 		artifact.setSold("n");
-		//½«artifactÌí¼Óµ½Êı¾İ¿â
+		//å°†artifactæ·»åŠ åˆ°æ•°æ®åº“
 		boolean res=new ArtifactService().addArtifact(artifact);
 		if(!res) return getBoolResult(false);
-		//½«Êı¾İÌí¼Óµ½±¾µØ»º´æ
+		//å°†æ•°æ®æ·»åŠ åˆ°æœ¬åœ°ç¼“å­˜
 		artifact.setDescription("");
 		allartifacts.add(artifact);
-		//½«Í¼Æ¬¼ÓÔØµ½ÏàÓ¦Ä¿Â¼
+		//å°†å›¾ç‰‡åŠ è½½åˆ°ç›¸åº”ç›®å½•
 		Uploader uploader=new Uploader();
 		res=uploader.loadMultipleFiles(request, response, request.getSession().getServletContext().getRealPath("/WEB-INF/images/artifact/")+"/"+artifact.getId(),".jpg");
 		return getBoolResult(res);
@@ -152,12 +152,12 @@ public class ArtifactController {
 		long id=new Long(request.getParameter("id"));
 		ArtifactService service=new ArtifactService();
 		int picnum=service.getPictnum(id);
-		//É¾³ıÊı¾İ¿âÖĞµÄÊı¾İ
+		//åˆ é™¤æ•°æ®åº“ä¸­çš„æ•°æ®
 		boolean res=service.delArtifact(id);
 		if(!res) return getBoolResult(false);
-		//É¾³ıÄÚ´æÖĞµÄÊı¾İ
+		//åˆ é™¤å†…å­˜ä¸­çš„æ•°æ®
 		delartifacts(id);
-		//É¾³ıÍ¼Æ¬
+		//åˆ é™¤å›¾ç‰‡
 		deleteFile(request.getSession().getServletContext().getRealPath("/WEB-INF/images/artifact")+"/"+id,".jpg",picnum);
 		return getBoolResult(res);
 	}
@@ -241,7 +241,7 @@ public class ArtifactController {
 	
 	public boolean deleteFile(String sPath,String suffix,int picnum) {  
 	    boolean flag = false;  
-	    // Â·¾¶ÎªÎÄ¼şÇÒ²»Îª¿ÕÔò½øĞĞÉ¾³ı  
+	    // è·¯å¾„ä¸ºæ–‡ä»¶ä¸”ä¸ä¸ºç©ºåˆ™è¿›è¡Œåˆ é™¤  
 	    for(int i=1;i<=picnum;i++){
 	    	System.out.println(sPath+"_"+i+suffix);
 	    	File file = new File(sPath+"_"+i+suffix);  
