@@ -25,11 +25,11 @@
 <!-- bootstrap-select -->
 <link rel="stylesheet" href="bootstrap-select/bootstrap-select.min.css">
 <!-- Custom styles for this template -->
-<link rel="stylesheet" type="text/css" href="mycss/custom.css" />
 <link rel="stylesheet" type="text/css" href="mycss/default.css" />
 <link rel="stylesheet" type="text/css" href="mycss/Supernice1.css" />
 <link rel="stylesheet" href="css/jqzoom.css" type="text/css"
 	media="screen" />
+<link rel="stylesheet" type="text/css" href="mycss/custom.css" />
 <style type="text/css">
 .thumbnail {
 	border-style: hidden;
@@ -197,6 +197,15 @@ body, h1, h2, h3, h4, h5, h6 {
 
 	<!-- Begin page content -->
 	<div class="container mincontent">
+		<ol class="mynav breadcrumb">
+          <li><a href="./">Home</a></li>
+          <span style="text-align: center;">>></span>
+          <li id='artistType'></li>
+          <span style="text-align: center;">>></span>
+          <li id='artistName'></li>
+          <span style="text-align: center;">>></span>
+          <li class="active" id='artworkName'></li>
+        </ol>
 		<div class="row">
 			<div class="col-xs-8 col-md-8">
 				<div class="col-xs-11 slider slider-for">

@@ -16,9 +16,11 @@ $(document).ready(function(){
       // allartist页面获取所有的artist
       var type = $.getUrlParam('type');//判读要访问的artist类型，返回不同的数据
       if(type == 'allcraftsmen'){
-          $('#type').html('ARTIFACT <small>we have <span id="count">**</span> artists</small>');
+          $('#type').html('ARTIFACT <small>we have <span id="count"></span> artists</small>');
+          $('#artistType').html('Artifact');
       }else{
-          $('#type').html('FINE ART <small>we have <span id="count">**</span> artists</small>');
+          $('#type').html('FINE ART <small>we have <span id="count"></span> artists</small>');
+          $('#artistType').html('Fine Art');
       };
       // $('#count').html('10');//看效果的时候用
       request = "./user/"+type+'?page=0';
@@ -45,6 +47,15 @@ $(document).ready(function(){
             </div>\
           </div>');
         };
+            // init Masonry
+        var $grid = $('#allArtist').masonry({
+          // options...
+          itemSelector: '.artist-item'
+        });
+        // layout Masonry after each image loads
+        $grid.imagesLoaded().progress( function() {
+          $grid.masonry('layout');
+        });
       });
     //这个for循环仅仅是为了写代码方便保留，实际放到服务器中用的时候应删除
  /*   for (var i = 1; i < 16; i++) {
@@ -59,13 +70,5 @@ $(document).ready(function(){
     };*/
     //for end
       
-    // init Masonry
-    var $grid = $('#allArtist').masonry({
-      // options...
-      itemSelector: '.artist-item'
-    });
-		// layout Masonry after each image loads
-		$grid.imagesLoaded().progress( function() {
-		  $grid.masonry('layout');
-		});
+
 });

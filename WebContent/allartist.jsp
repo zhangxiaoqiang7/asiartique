@@ -26,9 +26,9 @@
     <!-- bootstrap-select -->
     <link rel="stylesheet" href="bootstrap-select/bootstrap-select.min.css">
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" type="text/css" href="mycss/custom.css"/>
     <link rel="stylesheet" type="text/css" href="mycss/default.css"/>
      <link rel="stylesheet" type="text/css" href="mycss/Supernice1.css"/>
+     <link rel="stylesheet" type="text/css" href="mycss/custom.css"/>
      <style type="text/css">
          .thumbnail{
             border-style: hidden;
@@ -193,6 +193,11 @@
 
   <!-- allartist in pictures -->
   <div class="container mincontent">
+        <ol class="mynav breadcrumb">
+          <li><a href="./">Home</a></li>
+          <span style="text-align: center;">>></span>
+          <li class="active" id='artistType'>Fine Art</li>
+        </ol>
     <div class="row clearfix" style="padding-bottom: 20px;">
         <div class="col-xs-12">
           <h2 id='type'></h2>

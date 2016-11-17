@@ -20,6 +20,9 @@ $(document)
 					var artworkid = $.getUrlParam('awid');
 					var type = $.getUrlParam('type');
 					var artname = $.getUrlParam('artname');
+					var artid = $.getUrlParam('artid');
+					var alink = '<a href="artist.jsp?artid='+artid+'&type='+type+'">'+artname+'</a>';
+					$('#artistName').html(alink);//导航栏中的artist name
 					$('#artname').html(artname);// artist name
 					// alert(artworkid+': '+type);
 					// alert(type);
@@ -28,11 +31,13 @@ $(document)
 																		// =
 																		// allcraftsmen
 						var imgurl = './images/artifact/';
+						$('#artistType').html('<a href="allartist.jsp?type=allcraftsmen">Artifact</a>');
 					} else {
 						var request = './user/fineart?id=' + artworkid;// type
 																		// =
 																		// allprofartists
 						var imgurl = './images/fineart/';
+						$('#artistType').html('<a href="allartist.jsp?type=allprofartists">Fine Art</a>');
 					}
 					;
 					$
@@ -61,6 +66,7 @@ $(document)
 										 * $('#date').html(artwork[0].date);//artwork
 										 * date
 										 */
+										$('#artworkName').html(artwork[0].name);//导航栏的artwork name
 										$('#workname').html(artwork[0].name);// artwork
 																				// name
 										$('#width').html(

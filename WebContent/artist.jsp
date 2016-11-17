@@ -25,9 +25,9 @@
     <!-- bootstrap-select -->
     <link rel="stylesheet" href="bootstrap-select/bootstrap-select.min.css">
     <!-- Custom styles for this template -->
-    <link rel="stylesheet" type="text/css" href="mycss/custom.css"/>
     <link rel="stylesheet" type="text/css" href="mycss/default.css"/>
     <link rel="stylesheet" type="text/css" href="mycss/Supernice1.css"/>
+    <link rel="stylesheet" type="text/css" href="mycss/custom.css"/>
 
     <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
     <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
@@ -184,6 +184,13 @@
   </header>
     <!-- Begin page content -->
     <div class="container mincontent">
+        <ol class="mynav breadcrumb">
+          <li><a href="./">Home</a></li>
+          <span style="text-align: center;">>></span>
+          <li id='artistType'></li>
+          <span style="text-align: center;">>></span>
+          <li class="active" id='artistName'></li>
+        </ol>
       <div class="row">
         <div class="col-md-12 column">
           <div class="slider variable-width">

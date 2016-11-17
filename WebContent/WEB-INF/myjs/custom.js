@@ -20,14 +20,17 @@ $(document).ready(function(){
       if(type == 'allcraftsmen'){
           var request = './user/craftsman?id='+artistid;//type = allcraftsmen
           var imgurl = './images/artifact/';
+          $('#artistType').html('<a href="allartist.jsp?type=allcraftsmen">Artifact</a>');
       }else{
           var request = './user/profartist?id='+artistid;//type = allprofartists
           var imgurl = './images/fineart/';
+          $('#artistType').html('<a href="allartist.jsp?type=allprofartists">Fine Art</a>');
       };
       $.get(request, function(data, status) {
         //alert("data: " + data + "\nstatus" + status);
         //document.write(data+"</br>");
         var artist = JSON.parse(data);
+        $('#artistName').html(artist[0].name);//导航栏中的artist name
         $('#artname').html(artist[0].name);//artist name
         //为了让画家生卒年出现在名字下面，这里把description和location反过来了，后续再调整
         $('#artloc').html(artist[0].description);//artist location
@@ -37,13 +40,13 @@ $(document).ready(function(){
         $('#workcount').html(artworks.length+" works,"+artworks.length+" sold");//artist work count
         for (var i = 0; i < artworks.length; i++) {
           var artworkid = artworks[i];
-          var url = "artwork.jsp?awid="+artworkid+'&type='+type+'&artname='+artist[0].name;
+          var url = "artwork.jsp?awid="+artworkid+'&type='+type+'&artname='+artist[0].name+'&artid='+artistid;
           // alert("a");
           $('.variable-width').append('<div class="image"><a href="'+url+'" class="thumbnail">\
             <img style="height: 250px;" src="'+imgurl+artworkid+'_1.jpg" alt="..."></a></div>');
 
           $('#grid').append('<div class="col-xs-6 col-sm-4 col-md-3 column grid-item">\
-            <div class="thumbnail zoomin"><a href="'+url+'" style="hover:">\
+            <div class="thumbnail zoomin"><a href="'+url+'">\
             <img src="'+imgurl+artworkid+'_1.jpg" alt="..."></a>\
             </div>\
             </div>');
@@ -52,10 +55,19 @@ $(document).ready(function(){
             dots: true,
         		infinite: false,
         		speed: 300,
-        		slidesToShow: 0,
-        		centerMode: true,
+        		slidesToShow: 1,
+        		centerMode: false,
         		variableWidth: true,
         		autoplay: true
+          });
+            // init Masonry
+          var $grid = $('#grid').masonry({
+            // options...
+            itemSelector: '.grid-item'
+          });
+          // layout Masonry after each image loads
+          $grid.imagesLoaded().progress( function() {
+            $grid.masonry('layout');
           });
       });
       
@@ -102,15 +114,6 @@ $(document).ready(function(){
         </div>');
       };*/
       //for end
-	  // init Masonry
-		var $grid = $('#grid').masonry({
-		  // options...
-		  itemSelector: '.grid-item'
-		});
-		// layout Masonry after each image loads
-		$grid.imagesLoaded().progress( function() {
-		  $grid.masonry('layout');
-		});
 });
 // artist页面中的readmore实现
 $(function(){

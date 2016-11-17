@@ -52,7 +52,7 @@ body > .container {
   left: 0;
 }*/
 .zoomin img { 
-  height: 200px; 
+  /*height: 200px; */
   width: 200px; 
   -webkit-filter: brightness(100%);
   -webkit-transition: all 0.5s ease; 
@@ -72,7 +72,7 @@ body > .container {
   opacity: 0;
   position:absolute; 
   z-index:1; 
-  left:10%; 
+  left:15%; 
   top:80%;
   font-size : 1.5em;
   color : #FFF;
@@ -94,4 +94,9 @@ body > .container {
 }*/
 .imgslider{
   margin-left:10px; 
+}
+
+.mynav{
+  background-color: #FFF;
+  font-size: 1.2em;
 }
